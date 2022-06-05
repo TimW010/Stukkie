@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Euromast",
+    "address": "Parkhaven 20",
+    "zip": "3016 GM",
+    "tel": "010 436 4811",
+    "website": "https://euromast.nl/",
+    "latitude": "51.90571",
+    "longitude": "4.46669"
+  },
+  {
+    "name": "Depot Boijmans Van Beuningen",
+    "address": "Museumpark 24",
+    "zip": "3015 CX",
+    "tel": "010 441 9400",
+    "website": "https://www.boijmans.nl/depot",
+    "latitude": "51.91388",
+    "longitude": "4.47105"
+  },
+  {
+    "name": "Rotterdam Centraal",
+    "address": "Stationsplein 1",
+    "zip": "3013 AJ",
+    "latitude": "51.92441",
+    "longitude": "4.46987"
+  }
+]
