@@ -49,7 +49,7 @@ function MapsScreen() {
         }}
         showsUserLocation={true}
       >
-        {isActive
+        {/* {isActive
           ? sights.map((prop, key) => {
               return (
                 <Marker
@@ -62,8 +62,17 @@ function MapsScreen() {
                 />
               );
             })
-          : null}
+          : null} */}
       </MapView>
+      {isActive ? (
+        <Callout style={styles.menu}>
+          <View style={{ margin: 10 }}>
+            {sights.map((prop) => {
+              return <Text>{prop.name}</Text>;
+            })}
+          </View>
+        </Callout>
+      ) : null}
       <Callout>
         <TouchableOpacity
           style={styles.menuButton}
@@ -102,6 +111,9 @@ const styles = StyleSheet.create({
   },
   menu: {
     backgroundColor: "#fff",
+    display: "flex",
+    borderRadius: 10,
+    margin: 10,
   },
 });
 
