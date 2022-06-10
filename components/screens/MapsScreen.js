@@ -9,6 +9,7 @@ import {
   Text,
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import Menu from "../Menu";
 import sights from "../sights.json";
 
 function MapsScreen() {
@@ -64,13 +65,18 @@ function MapsScreen() {
             })
           : null} */}
       </MapView>
-      {isActive ? (
+      {/* {isActive ? (
         <Callout style={styles.menu}>
           <View style={{ margin: 10 }}>
             {sights.map((prop) => {
               return <Text>{prop.name}</Text>;
             })}
           </View>
+        </Callout>
+      ) : null} */}
+      {isActive ? (
+        <Callout>
+          <Menu></Menu>
         </Callout>
       ) : null}
       <Callout>
@@ -106,12 +112,6 @@ const styles = StyleSheet.create({
   menuButton: {
     backgroundColor: "#fff",
     padding: 5,
-    borderRadius: 10,
-    margin: 10,
-  },
-  menu: {
-    backgroundColor: "#fff",
-    display: "flex",
     borderRadius: 10,
     margin: 10,
   },

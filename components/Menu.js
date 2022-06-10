@@ -1,22 +1,28 @@
 import * as React from "react";
-import MapView, { Marker } from "react-native-maps";
+import { StyleSheet, View, Text } from "react-native";
+import Ionicons from "react-native-vector-icons/Ionicons";
 import sights from "./sights.json";
 
 function Menu() {
-  {
-    sights.map((prop, key) => {
-      return (
-        <Marker
-          key={key}
-          coordinate={{
-            latitude: parseFloat(prop.latitude),
-            longitude: parseFloat(prop.longitude),
-          }}
-          title={prop.name}
-        />
-      );
-    });
-  }
+  return (
+    <View style={styles.container}>
+      <View style={{ marginTop: 25 }}>
+        <View style={{ margin: 10 }}>
+          {sights.map((prop) => {
+            return <Text>{prop.name}</Text>;
+          })}
+        </View>
+      </View>
+    </View>
+  );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "#fff",
+    borderRadius: 10,
+    margin: 10,
+  },
+});
 
 export default Menu;
