@@ -1,7 +1,13 @@
 import * as React from "react";
 import MapView, { Callout, Marker } from "react-native-maps";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View, Dimensions, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Dimensions,
+  TouchableOpacity,
+  Appearance,
+  useColorScheme,
+} from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Markers from "../Markers";
 
@@ -12,6 +18,10 @@ function MapsScreen() {
     latitude: 0,
     longitude: 0,
   });
+
+  const colorScheme = useColorScheme();
+  const themeContainerStyle =
+    colorScheme === "light" ? styles.lightContainer : styles.darkContainer;
 
   React.useEffect(() => {
     async () => {
@@ -47,19 +57,28 @@ function MapsScreen() {
       </MapView>
       <Callout>
         <TouchableOpacity
-          style={styles.menuButton}
+          style={[styles.menuButton, themeContainerStyle]}
           onPress={() => {
             setIsActive(!isActive);
           }}
         >
           {isActive ? (
-            <Ionicons name={"ios-close"} size={24} color={"#3D3D3D"}></Ionicons>
+            colorScheme === "light" ? (
+              <Ionicons
+                name={"ios-close"}
+                size={24}
+                color={"#3D3D3D"}
+              ></Ionicons>
+            ) : (
+              <Ionicons name={"ios-close"} size={24} color={"#fff"}></Ionicons>
+            )
+          ) : colorScheme === "light" ? (
+            <Ionicons name={"ios-pin"} size={24} color={"#3D3D3D"}></Ionicons>
           ) : (
-            <Ionicons name={"ios-list"} size={24} color={"#3D3D3D"}></Ionicons>
+            <Ionicons name={"ios-pin"} size={24} color={"#fff"}></Ionicons>
           )}
         </TouchableOpacity>
       </Callout>
-      <StatusBar style="dark" />
     </View>
   );
 }
@@ -76,10 +95,15 @@ const styles = StyleSheet.create({
     height: Dimensions.get("window").height,
   },
   menuButton: {
-    backgroundColor: "#fff",
     padding: 5,
     borderRadius: 10,
     margin: 10,
+  },
+  lightContainer: {
+    backgroundColor: "#fff",
+  },
+  darkContainer: {
+    backgroundColor: "#3D3D3D",
   },
 });
 
