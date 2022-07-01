@@ -1,16 +1,9 @@
 import * as React from "react";
 import MapView, { Callout, Marker } from "react-native-maps";
 import { StatusBar } from "expo-status-bar";
-import {
-  StyleSheet,
-  View,
-  Dimensions,
-  TouchableOpacity,
-  Text,
-} from "react-native";
+import { StyleSheet, View, Dimensions, TouchableOpacity } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import Menu from "../Menu";
-import sights from "../sights.json";
+import Markers from "../Markers";
 
 function MapsScreen() {
   const [isActive, setIsActive] = React.useState(false);
@@ -50,35 +43,8 @@ function MapsScreen() {
         }}
         showsUserLocation={true}
       >
-        {/* {isActive
-          ? sights.map((prop, key) => {
-              return (
-                <Marker
-                  key={key}
-                  coordinate={{
-                    latitude: parseFloat(prop.latitude),
-                    longitude: parseFloat(prop.longitude),
-                  }}
-                  title={prop.name}
-                />
-              );
-            })
-          : null} */}
+        {isActive ? <Markers></Markers> : null}
       </MapView>
-      {/* {isActive ? (
-        <Callout style={styles.menu}>
-          <View style={{ margin: 10 }}>
-            {sights.map((prop) => {
-              return <Text>{prop.name}</Text>;
-            })}
-          </View>
-        </Callout>
-      ) : null} */}
-      {isActive ? (
-        <Callout>
-          <Menu></Menu>
-        </Callout>
-      ) : null}
       <Callout>
         <TouchableOpacity
           style={styles.menuButton}
